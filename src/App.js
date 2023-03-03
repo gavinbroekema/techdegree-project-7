@@ -1,7 +1,7 @@
 
 import './App.css';
 
-import { Routes, Route, useParams, Switch } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 
 import ImageList from './ImageList';

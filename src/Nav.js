@@ -1,13 +1,8 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useRef } from 'react';
 
-
-  
-
-
 const Nav = () => {
   const search = useRef();
-  const topic = useRef();
   let navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,13 +31,13 @@ const Nav = () => {
       <nav class="main-nav">
         <ul>
           <li>
-            <NavLink to="/cotton">Cotton</NavLink>
+            <NavLink to="/watermelon">Watermelon</NavLink>
           </li>
           <li>
-            <NavLink to="/candy">Candy</NavLink>
+            <NavLink to="/sugar">Sugar</NavLink>
           </li>
           <li>
-            <NavLink to="/sweetnlow">Sugar</NavLink>
+            <NavLink to="/high">High</NavLink>
           </li>
         </ul>
       </nav>

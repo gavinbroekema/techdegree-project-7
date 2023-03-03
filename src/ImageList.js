@@ -16,7 +16,7 @@ const ImageList = () => {
 
   useEffect(() => {
     setLoading(true);
-    let activeFetch = true;
+    // let activeFetch = true;
     let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&page=1&format=json&nojsoncallback=1`;
     fetch(url)
     .then(res => res.json())
@@ -26,7 +26,7 @@ const ImageList = () => {
       console.log(result)
     })
     .catch(err => console.log('Error parsing data', err))
-    return () => {activeFetch = false}
+    // return () => {activeFetch = false}
   }, [query])
 
   let imageOut;
