@@ -1,10 +1,24 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useRef } from 'react';
+
+
+  
+
 
 const Nav = () => {
+  const search = useRef();
+  const topic = useRef();
+  let navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let searchQuery = search.current.value;
+    let path = `/${searchQuery}`;
+    navigate(path);
+  }
   return (
     <header>
-      <form class="search-form">
-        <input type="search" name="search" placeholder="Search" required />
+      <form class="search-form" onSubmit={handleSubmit}>
+        <input type="search" name="search" placeholder="Search" required ref={search} />
         <button type="submit" class="search-button">
           <svg
             fill="#fff"
@@ -22,13 +36,13 @@ const Nav = () => {
       <nav class="main-nav">
         <ul>
           <li>
-            <NavLink to="/cats">Cats</NavLink>
+            <NavLink to="/cotton">Cotton</NavLink>
           </li>
           <li>
-            <NavLink to="/dogs">Dogs</NavLink>
+            <NavLink to="/candy">Candy</NavLink>
           </li>
           <li>
-            <NavLink to="/computers">Computers</NavLink>
+            <NavLink to="/sweetnlow">Sugar</NavLink>
           </li>
         </ul>
       </nav>
