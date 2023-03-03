@@ -1,15 +1,15 @@
-// const Image = (props) => {
-//   // const {images} = props;
-//   const {url,id,title} = props;
-//   return (
-//     <li>
-//       <img
-//           src={url}
-//           key={id}
-//           alt={}
-//           />
-//     </li>
-//   )
-// }
+const Image = (props) => {
+  // const {images} = props;
+  const {src, alt} = props;
 
-// export default Image;
+  return (
+    <li>
+      <img
+          src={src}
+          alt={alt}
+          />
+    </li>
+  )
+}
+
+export default Image;

@@ -3,65 +3,27 @@ import Image from "./Image";
 
 
 const ImageList = (props) => {
-  const imageData = props.data.photos.photo;
-  console.log(imageData)
   let images;
-  
-  if(imageData.length > 0) {
-    images = imageData.map(photo => {
-      let {server, id, secret, title} = photo;
-      let url = `https://live.staticflickr.com/${server}/${id}_${secret}_w.jpg`;
-      <Image src={url} key={id} alt={title} />
-    })  
-    console.log(images);
+  if(props.loading) {
+    images = <p>Loading...</p>
+  } else if (!props.loading) {
+    const imageData = props.data.photos.photo;
+    images = imageData.map(image => <Image src={`https://live.staticflickr.com/${image.server}/${image.id}_${image.secret}_w.jpg`} key={image.id} alt={image.title} />)
   } else {
-    images = (
-    <li class="not-found">
-      <h3>No Results Found</h3>
-      <p>You search did not return any results. Please try again.</p>
-    </li>
+    images = ( 
+      <li class="not-found">
+        <h3>No Results Found</h3>
+        <p>You search did not return any results. Please try again.</p>
+      </li>
     )
   }
-  
-  // console.log(photoJSX)
   return (
     <section>
       <Nav />
       <div class="photo-container">
         <h2>Results</h2>
         <ul>
-        {/* {photoJSX} */}
-          
-
-          <li>
-            <img
-              src="https://farm5.staticflickr.com/4334/37032996241_4c16a9b530.jpg"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://farm5.staticflickr.com/4342/36338751244_316b6ee54b.jpg"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://farm5.staticflickr.com/4343/37175099045_0d3a249629.jpg"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://farm5.staticflickr.com/4425/36337012384_ba3365621e.jpg"
-              alt=""
-            />
-          </li>
-          {/* <!-- Not Found --> */}
-          <li class="not-found">
-            <h3>No Results Found</h3>
-            <p>You search did not return any results. Please try again.</p>
-          </li>
+        {images}
         </ul>
       </div>
     </section>
