@@ -20,18 +20,21 @@ function App() {
   useEffect(() => {
     setLoading(true);
     let activeFetch = true;
-    fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=762409951bbbdaa6ec50945c227e49de&tags=flowers&per_page=24&page=1&format=json&nojsoncallback=1`)
+    fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=flowers&per_page=24&page=1&format=json&nojsoncallback=1`)
       .then(res => res.json())
       .then(result => {
         setImages(result);
+        console.log(images)
         setLoading(false);
       })
       .catch(err => console.log('Error parsing data', err))
     return () => {activeFetch = false}
   }, [query])
+  console.log(images)
   return (
     <Routes>
-      <Route path='/' element={<ImageList data={images} />}></Route>
+      <Route path='/' element={
+      <ImageList loading={loading} data={images} />}></Route>
     </Routes>
   );
 }

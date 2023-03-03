@@ -6,6 +6,7 @@ const ImageList = (props) => {
   const imageData = props.data.photos.photo;
   console.log(imageData)
   let images;
+  
   if(imageData.length > 0) {
     images = imageData.map(photo => {
       let {server, id, secret, title} = photo;
