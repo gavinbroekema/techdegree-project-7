@@ -9,12 +9,12 @@ import ImageList from './ImageList';
 import Nav from './Nav';
 
 function App() {
-  let { query } = useParams();
   const [images, setImages] = useState([]);
-  // const [query, setQuery] = useState('flowers')
+  const [query, setQuery] = useState('flowers')
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+  
     setLoading(true);
     let activeFetch = true;
     let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&page=1&format=json&nojsoncallback=1`;
@@ -37,7 +37,7 @@ function App() {
   console.log(images)
   return (
     <Routes>
-      <Route path='/:query' element={<ImageList loading={loading} data={images} />}></Route>
+      <Route path='/' element={<ImageList loading={loading} data={images} />}></Route>
       {/* <Route path='/:query' element={<ImageList loading={loading} />}></Route> */}
     </Routes>
   );
